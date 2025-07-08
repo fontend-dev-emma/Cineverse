@@ -1,5 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config();
 import { formatDate } from './helper';
 
 const today = new Date();
