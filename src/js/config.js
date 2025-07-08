@@ -8,8 +8,8 @@ lastMonth.setDate(today.getDate() - 30);
 
 export const FROM = formatDate(lastMonth);
 export const TO = formatDate(today);
-export const TMDB_API_KEY = process.env.PUBLIC_TMDB_API_KEY;
-export const YOUTUBE_API_KEY = process.env.PUBLIC_YOUTUBE_API_KEY;
+export const TMDB_API_KEY = process.env.PARCEL_TMDB_API_KEY;
+export const YOUTUBE_API_KEY = process.env.PARCEL_YOUTUBE_API_KEY;
 export const GET_MOVIE_DETAILS_URL = `https://api.themoviedb.org/3/movie/`;
 export const GET_MOVIE_VIDEO_URL = `${GET_MOVIE_DETAILS_URL}550/videos?api_key=${TMDB_API_KEY}&language=en-US`;
 export const TOP_MOVIES_URL = `${GET_MOVIE_DETAILS_URL}top_rated?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
