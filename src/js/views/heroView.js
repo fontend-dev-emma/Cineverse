@@ -65,7 +65,7 @@ class HeroView extends View {
   <!-- Buttons -->
   <div class="flex gap-2 sm:gap-4 md:gap-6 text-xs sm:text-sm md:text-base">
     <button
-      class="movie-card bg-red-600 hover:bg-red-700 px-2 sm:px-6 lg:px-8 xl:px-10 py-2 sm:py-3 md:py-4 rounded-full font-semibold transition duration-200 flex items-center gap-1 sm:gap-2 flex-1 sm:flex-initial"
+      class="no-text-shadow movie-card bg-red-600 hover:bg-red-700 px-2 sm:px-6 lg:px-8 xl:px-10 py-2 sm:py-3 md:py-4 rounded-full font-semibold transition duration-200 flex items-center gap-1 sm:gap-2 flex-1 sm:flex-initial"
       data-id="${movie.id}" data-type="tmdb"
     >
       <i class="fa-solid fa-circle-play"></i> 
@@ -73,7 +73,7 @@ class HeroView extends View {
     </button>
 
     <button
-      class="bg-white text-gray-800 hover:bg-gray-200 px-2 sm:px-6 lg:px-8 xl:px-10 py-2 sm:py-3 md:py-4 rounded-full font-semibold transition duration-200 flex items-center gap-1 sm:gap-2 add-to-watchlist-btn flex-1 sm:flex-initial"
+      class="no-text-shadow bg-white text-gray-800 hover:bg-gray-200 px-2 sm:px-6 lg:px-8 xl:px-10 py-2 sm:py-3 md:py-4 rounded-full font-semibold transition duration-200 flex items-center gap-1 sm:gap-2 add-to-watchlist-btn flex-1 sm:flex-initial"
       data-movie="${encodeURIComponent(JSON.stringify(movie))}"
     >
       <i class="fa-solid fa-circle-plus"></i> 
