@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./styles/tailwind-output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/node_modules/swiper/swiper-bundle.min.css" />
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script  type="module" defer src="js/controller.js"></script>
+
+    <title>Cineverse – Explore Movies, Trailers & Watchlist</title>
+  </head>
+  <body class="bg-gray-950 " id="home">
+    <div class="relative"> 
+      <div
+        class=" absolute inset-0 -z-10 bg-[url('https://media.themoviedb.org/t/p/w1066_and_h600_bestv2/79YnAlr688qzGUvpgncitgaRw5l.jpg')]  bg-center bg-cover bg-no-repeat text-white hero-background-image"
+      > </div>
+
+        <!-- Overlay Layer -->
+        <div class="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
+ 
+  <!-- ///////////////////////////////////////////////////////////////////////////-->
+    <!-- //////////////    Header    //////////////////////////-->
+    <!-- //////////////////////////////////////////////////////////////////////////-->        
+    <header
+  class="top-0 px-4 py-6 sticky z-50 bg-black/10 backdrop-blur-xl shadow-md shadow-black/30 transition-all duration-300  text-white overflow-x-hidden" id="header"
+>
+  <div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-4">
+    <!-- Logo -->
+    <div class="flex items-center space-x-2">
+      <h1
+        class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide bg-gradient-to-r from-sky-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+      >
+        <i class="fa-solid fa-clapperboard"></i>
+        CineVerse
+      </h1>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="menu-btn"
+      class="md:hidden text-white text-2xl"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex space-x-10 font-medium">
+      <a href="#underrated-gems" class="hover:text-blue-300 transition text-xl">
+        Underrated
+      </a>
+      <a href="watchList.html" class="hover:text-blue-300 transition text-xl">
+        Watchlist
+      </a>
+      <a href="about.html" class="hover:text-blue-300 transition text-xl">
+        About
+      </a>
+    </nav>
+
+    <!-- Desktop Search -->
+    <form
+      class="hidden md:flex items-center border border-white/60 rounded-full px-4 py-1.5 w-64 focus-within:ring-2 focus-within:ring-blue-300 transition duration-200"
+      id="search-form"
+    >
+      <input
+        type="text"
+        autocomplete="off"
+        placeholder="Search movies..."
+        class="bg-transparent text-lg text-white placeholder-white/60 outline-none border-none focus:outline-none focus:ring-0 focus:border-none flex-1"
+        id="search-input"
+      />
+      <button type="submit" class="text-white hover:text-blue-300 transition -ml-4">
+        <i class="fa-solid fa-magnifying-glass text-2xl"></i>
+      </button>
+    </form>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div
+    id="mobile-menu-dropdown-links"
+    class="md:hidden hidden flex-col gap-4 px-6 pt-4 mt-2 pb-6 bg-black/10 text-white backdrop-blur-xl rounded-b-lg"
+  >
+    <a href="#underrated-gems" class="hover:text-blue-300 text-base mr-4 mb-2">Underrated</a>
+    <a href="watchList.html" class="hover:text-blue-300 text-base mr-4 mb-2">Watchlist</a>
+    <a href="about.html" class="hover:text-blue-300 text-base mb-2">About</a>
+
+    <!-- Mobile Search -->
+    <form
+      class="search-form flex items-center border border-white/60 rounded-full px-4 py-1.5 w-full focus-within:ring-2 focus-within:ring-blue-300 transition mt-4"
+      id="search-form"
+    >
+      <input
+        type="text"
+        autocomplete="off"
+        placeholder="Search movies..."
+        class="bg-transparent text-lg text-white placeholder-white/60 outline-none border-none focus:outline-none focus:ring-0 focus:border-none flex-1"
+        id="search-input"
+      />
+      <button type="submit" class="text-white hover:text-blue-300 transition -ml-8">
+        <i class="fa-solid fa-magnifying-glass text-xl"></i>
+      </button>
+    </form>
+  </div>
+</header>
+
+<main class="text-shadow">
+        <!-- ///////////////////////////////////////// -->
+        <!-- hero section -->
+        <!-- /////////////////////////////////////// -->
+    <section
+  id="hero"
+  class="relative overflow-hidden text-white min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[800px] flex items-center z-10"
+>
+  <div
+    class=" relative z-10 w-full px-4 sm:px-6 md:px-10" id="hero-movie-overView-parentElement"
+  ></div>
+</section>
+
+        <!-- ////////////////////////////////////////////// -->
+        <!-- Trending movies section -->
+        <!-- ////////////////////////////////////////// -->
+        <section
+          class="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 py-8 sm:py-12 md:py-16 relative z-10 hidden opacity-0 transition-opacity duration-500 overflow-x-hidden"
+          id="trending-movies"
+          data-aos="fade-up"
+        >
+          <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-yellow-400 mb-2">
+            <i class="fa-solid fa-fire text-orange-500"></i>
+            Trending movies
+          </h3>
+
+          <div class="relative overflow-x-auto scrollbar-hide">
+            <div
+              class="flex gap-5 min-w-max p-4 no-text-shadow"
+              id="trending-movie-container"
+            >
+              <!-- Slides cards to be injected here  Dynamically-->
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- /////////////////////////////////////////////////////// -->
+      <!-- Upcoming movies section -->
+      <!-- /////////////////////////////////////////////////////// -->
+        <div class="bg-gray-900">
+          <section
+          class="max-w-8xl mx-auto py-10 px-7 relative z-10 text-shadow overflow-x-hidden "
+          id="upcoming-movies-section"
+          data-aos="fade-right"
+        >
+          <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-emerald-400 mb-2">
+            <i class="fa-solid fa-calendar-days"></i> Upcoming Movies
+          </h3>
+        
+          <!-- Scrollable area -->
+          <div class="relative overflow-x-auto scrollbar-hide -mx-4 py-4">
+            <!-- Card track (horizontal scrolling) -->
+            <div class="flex gap-5 w-max" id="upcoming-movies-container">
+              <!-- Cards will be injected here -->
+            </div>
+          </div>
+        </section>
+        </div>
+
+        <!-- /////////////////////////////////////////////////////// -->
+        <!-- Production Brand logos sections -->
+        <!-- /////////////////////////////////////////////////////// -->
+        <div class="bg-slate-300">
+          <section
+            class="w-full py-6 md:py-10 lg:py-14 overflow-hidden cursor-pointer overflow-x-hidden" data-aos="zoom-in"
+          >
+            <div class="relative w-full whitespace-nowrap">
+              <!-- Outer container to mask overflow -->
+              <div
+                class="animate-scroll flex gap-6 sm:gap-10 md:gap-16 lg:gap-20 items-center w-max"
+                id="production-logos-container"
+              >
+                <!-- Repeat logos for seamless                 here  Dynamically-->
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- /////////////////////////////////////////////////////// -->
+        <!-- Underrated List movies section -->
+        <!-- /////////////////////////////////////////////////////// -->
+        <div class="bg-gray-900">
+          <section
+            class="container mx-auto px-2 sm:px-5 lg:px-16 xl:px-32 py-10 text-gray-900 hidden opacity-0 transition-opacity duration-500 overflow-x-hidden"
+            id="underrated-gems" data-aos="fade-left"
+          >
+            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-purple-400 mb-2">
+              <i class="fa-solid fa-gem"></i>
+              Underrated Gems
+            </h3>
+
+            <div class="relative">
+              <div
+                class="swiper underrated_movies_swiper w-full"
+                id="underrated-movies-swiper-container"
+              >
+                <div
+                  class="swiper-wrapper py-4 no-text-shadow"
+                  id="underrated-swiper-movies-parentElement"
+                >
+                  <!-- Slides cards to be injected here  Dynamically-->
+                </div>
+
+                <!-- Navigation buttons -->
+                <div
+                  class="swiper-button-prev !text-black !bg-white !px-3 !py-2 !rounded-full !shadow absolute left-0 top-1/2 -translate-y-1/2 z-30"
+                  id="underrated_prev"
+                ></div>
+                <div
+                  class="swiper-button-next !text-black !bg-white !px-3 !py-2 !rounded-full !shadow absolute right-0 top-1/2 -translate-y-1/2 z-30"
+                  id="underrated_next"
+                ></div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- /////////////////////////////////////////////////////// -->
+        <!-- Search results section  -->
+        <!-- /////////////////////////////////////////////////////// -->
+        <div class="bg-slate-300">
+          <section
+            class="max-w-8xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40 py-16 sm:py-24 md:py-32 hidden opacity-0 transition-opacity duration-500 overflow-x-hidden"
+            id="search-results-section"
+          >
+            <h3
+              class="text-xl sm:text-2xl md:text-3xl lg:text-4xl sm:text-5xl lg:text-6xl font-semibold mb-12 text-center text-slate-800 no-text-shadow"
+            >
+            <i class="fa-solid fa-magnifying-glass text-blue-400"></i>
+             Search Results
+            </h3>
+
+            <div class="mb-16">
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-10 gap-x-4"
+                id="tmdb-search-results-container" data-aos="fade-up"
+              >
+                <!-- TMDB Movie Cards injected here  Dynamically-->
+              </div>
+            </div>
+
+            <div>
+              <h2
+                class="text-2xl font-semibold mb-6 text-center text-slate-900 no-text-shadow"
+              >
+              <i class="fa-solid fa-film text-sky-400"></i>
+               Search Results for YouTube
+              </h2>
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-10 gap-x-4"
+                id="youtube-search-results-container" data-aos="fade-up"
+              >
+                <!-- YouTube Movie Cards injected here Dynamically -->
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- /////////////////////////////////////////////////////// -->
+        <!-- Continue watching list section -->
+        <!-- /////////////////////////////////////////////////////// -->
+        <div class="bg-gray-900">
+          <section
+            class="container mx-auto px-2 sm:px-5 lg:px-16 xl:px-32 py-10 text-gray-900 hidden opacity-0 transition-opacity duration-500 overflow-x-hidden" data-aos="fade-right"
+          >
+            <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-blue-400">
+              <i class="fa-solid fa-circle-play"></i>
+              Continue Watching
+            </h2>
+
+            <div class="relative">
+              <!-- Swiper Container -->
+              <div
+                class="swiper continue_watching_swiper w-full"
+                id="continue-watching-movies-swiper-container"
+              >
+                <div
+                  class="swiper-wrapper no-text-shadow py-4"
+                  id="continue-watching-movies-swiper-parentElement"
+                >
+                  <!-- Slides cards to injected here  Dynamically-->
+                </div>
+              </div>
+
+              <!-- Navigation Buttons -->
+              <div
+                class="swiper-button-prev !text-black !bg-white !px-3 !py-2 !rounded-full !shadow absolute left-0 top-1/2 -translate-y-1/2 z-30"
+                id="continue_watching_prev"
+              ></div>
+              <div
+                class="swiper-button-next !text-black !bg-white !px-3 !py-2 !rounded-full !shadow absolute right-0 top-1/2 -translate-y-1/2 z-30"
+                id="continue_watching_next"
+              ></div>
+            </div>
+          </section>
+        </div>
+
+        <!-- ///////////////////////////////////////////////// -->
+        <!--  Newly Released section -->
+        <!-- ///////////////////////////////////////////////// -->
+        <div class="bg-slate-300">
+          <section
+            class="container mx-auto px-2 sm:px-6 lg:px-16 xl:px-32 py-10 text-gray-900 hidden opacity-0 transition-opacity duration-500 overflow-x-hidden"
+            id="newly-released-section" data-aos="fade-up"
+          >
+            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-indigo-600 no-text-shadow">
+              <i class="fa-solid fa-bolt"></i>
+              Newly Released
+            </h3>
+
+            <div class="relative">
+              <!-- Swiper Container -->
+              <div
+                class="swiper newly_released_swiper w-full"
+                id="newly-Released-movies-swiper-container"
+              >
+                <div
+                  class="swiper-wrapper no-text-shadow py-4"
+                  id="newly-Released-swiper-parentElement"
+                >
+                  <!-- Slides cards to injected here  Dynamically-->
+                </div>
+              </div>
+
+              <!-- Navigation buttons -->
+              <div
+                class="swiper-button-prev !text-black !bg-white !px-3 !py-2 !rounded-full !shadow absolute left-0 top-1/2 -translate-y-1/2 z-30"
+                id="newly_released_prev"
+              ></div>
+              <div
+                class="swiper-button-next !text-black !bg-white !px-3 !py-2 !rounded-full !shadow absolute right-0 top-1/2 -translate-y-1/2 z-30"
+                id="newly_released_next"
+              ></div>
+            </div>
+          </section>
+        </div>
+
+        <!-- //////////////////////////////////////////////// -->
+        <!-- Top Rated movies -->
+        <!-- //////////////////////////////////////////////// -->
+        <div class="bg-gray-900">
+          <section
+            class="container mx-auto px-2 sm:px-6 lg:px-16 xl:px-32 py-10 text-gray-900 hidden opacity-0 transition-opacity duration-500 overflow-x-hidden"
+            id="top-rated-section" data-aos="zoom-in"
+          >
+            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-yellow-400">
+              <i class="fa-solid fa-medal"></i>
+              Top Rated Movies
+            </h3>
+
+            <div class="relative">
+              <!-- Swiper Container -->
+              <div
+                class="swiper top_rated_swiper w-full"
+                id="top-rated-movies-swiper-container"
+              >
+                <div
+                  class="swiper-wrapper no-text-shadow py-4"
+                  id="top-rated-movies-swiper-parentElement"
+                >
+                  <!-- Slides cards to be injected here  Dynamically-->
+                </div>
+              </div>
+
+              <!-- Navigation buttons -->
+              <div
+                class="swiper-button-prev !text-black !bg-white !px-3 !py-2 !rounded-full !shadow absolute left-0 top-1/2 -translate-y-1/2 z-30"
+                id="top_rated_prev"
+              ></div>
+              <div
+                class="swiper-button-next !text-black !bg-white !px-3 !py-2 !rounded-full !shadow absolute right-0 top-1/2 -translate-y-1/2 z-30"
+                id="top_rated_next"
+              ></div>
+            </div>
+          </section>
+        </div>
+
+        <!-- ///////////////////////////////////////////////////-->
+        <!-- Recommend movies section -->
+        <!-- //////////////////////////////////////////////// -->
+        <div class="bg-slate-300">
+          <section
+            class="container mx-auto px-2 sm:px-6 lg:px-16 xl:px-32 py-10 text-gray-900 hidden opacity-0 transition-opacity duration-500 overflow-x-hidden header-scroll-end-content"
+            id="recommended-movies" data-aos="fade-left"
+          >
+            <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-indigo-600 no-text-shadow">
+              <i class="fa-solid fa-handshake"></i>
+              Recommended For You
+            </h2>
+
+            <div class="relative">
+              <!-- Swiper Container -->
+              <div
+                class="swiper recommended_movies_swiper w-full"
+                id="recommended-movies-swiper-container"
+              >
+                <div
+                  class="swiper-wrapper  no-text-shadow py-4"
+                  id="recommended-movies-swiper-ParentElement"
+                >
+                  <!-- Slides cards to be injected here  Dynamically-->
+                </div>
+              </div>
+
+              <!-- Navigation Buttons -->
+              <div
+                class="swiper-button-prev !text-black !bg-white !px-3 !py-2 !rounded-full !shadow absolute left-0 top-1/2 -translate-y-1/2 z-30"
+                id="recommended_movies_prev"
+              ></div>
+              <div
+                class="swiper-button-next !text-black !bg-white !px-3 !py-2 !rounded-full !shadow absolute right-0 top-1/2 -translate-y-1/2 z-30"
+                id="recommended_movies_next"
+              ></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer section -->
+    <footer class="bg-gray-900 text-white py-10 px-6 overflow-x-hidden">
+      <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-8"
+      >
+        <!-- Branding -->
+        <div>
+          <h2 class="text-3xl font-bold mb-2">
+            <i class="fa-solid fa-clapperboard text-white drop-shadow-md"></i>
+            CineVerse
+          </h2>
+          <p class="text-sm text-gray-400 max-w-xs">
+            Explore trending hits, hidden gems, and personalized
+            recommendations—all in one place.
+          </p>
+        </div>
+
+        <!-- Page Navigation -->
+        <div>
+          <h3 class="text-2xl font-semibold mb-3">Navigate</h3>
+          <ul class="space-y-2 text-base">
+            <li><a href="#hero" class="hover:underline">Home</a></li>
+            <li>
+              <a href="#trending-movies" class="hover:underline">Trending</a>
+            </li>
+            <li>
+              <a href="#recommended-movies" class="hover:underline"
+                >Recommended movies</a
+              >
+            </li>
+            <li>
+              <a href="#underrated-gems" class="hover:underline"
+                >Underrated movies</a
+              >
+            </li>
+            <li>
+              <a href="watchlist.html" class="hover:underline">Watchlist</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Developer Info -->
+        <div class="flex flex-col space-y-4">
+          <div>
+            <h3 class="text-2xl font-semibold mb-2">Developer</h3>
+            <a
+              href="https://github.com/fontend-dev-emma"
+              target="_blank"
+              class="text-white text-base font-medium flex items-center space-x-2 hover:underline"
+            >
+              <i class="fab fa-github text-2xl"></i>
+              <span class="text-lg">/fontend-dev-emma</span>
+            </a>
+          </div>
+
+          <!-- Back to Top -->
+          <button
+            onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
+            class="mt-2 inline-block px-4 py-2 bg-white text-gray-900 text-sm font-semibold rounded hover:bg-gray-100 hover:text-blue-500 transition-colors duration-300"
+          >
+            <span> ↑ Back to Top</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div
+        class="text-center text-xs text-gray-500 mt-10 border-t border-gray-800 pt-4"
+      >
+        &copy; <span class="year"></span> CineVerse. Built by Waziri Emmanuel (@code_with_mullar).
+      </div>
+    </footer>
+  </body>
+</html>

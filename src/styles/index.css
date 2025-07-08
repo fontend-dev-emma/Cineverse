@@ -1,0 +1,53 @@
+/*stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
+
+.text-shadow,
+.text-shadow * {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.no-text-shadow,
+.no-text-shadow * {
+  text-shadow: none !important;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/**************************/
+/* For mobile 768px (smaller tablet screens) */
+/**************************/
+
+h1,
+h2,
+h3,
+nav {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+.bg-noise::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url('/src/assets/noise.png') repeat;
+  opacity: 0.3;
+  z-index: -10;
+  pointer-events: none;
+}
